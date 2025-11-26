@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Among Us WhatsApp - Juego Secreto</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Pantalla de Bienvenida -->
+        <div id="welcome-screen" class="screen active">
+            <div class="container">
+                <h1>🎮 AMONG US WHATSAPP</h1>
+                <p>Juego secreto para grupos - Versión Texto</p>
+                
+                <div class="welcome-card">
+                    <h2>¿Cómo Jugar?</h2>
+                    <ol>
+                        <li>Comparte este enlace en tu grupo de WhatsApp</li>
+                        <li>Cada jugador se registra con su nombre</li>
+                        <li>Los roles se asignan automáticamente</li>
+                        <li>¡Encuentra al impostor!</li>
+                    </ol>
+                    
+                    <div class="input-group">
+                        <input type="text" id="player-name" placeholder="Tu nombre en el grupo" maxlength="20">
+                        <button onclick="registrarJugador()">Unirse al Juego</button>
+                    </div>
+                    
+                    <div id="game-link" class="hidden">
+                        <p>Comparte este enlace en tu grupo:</p>
+                        <code id="invite-link"></code>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla del Juego -->
+        <div id="game-screen" class="screen">
+            <div class="container">
+                <header class="game-header">
+                    <h2>🔍 MODO ESPÍA ACTIVO</h2>
+                    <div id="game-info">
+                        <span id="player-role"></span>
+                        <span id="game-status"></span>
+                    </div>
+                </header>
+
+                <!-- Mapa del Juego -->
+                <div id="map-container">
+                    <div id="map" class="game-map"></div>
+                    <div id="player-positions"></div>
+                </div>
+
+                <!-- Acciones del Jugador -->
+                <div id="actions-panel">
+                    <h3>Tus Acciones:</h3>
+                    <div class="actions-grid">
+                        <button onclick="ejecutarAccion('mover', 'exterior')">🌳 Exterior</button>
+                        <button onclick="ejecutarAccion('mover', 'casa1')">🏠 Casa 1</button>
+                        <button onclick="ejecutarAccion('mover', 'casa2')">🏠 Casa 2</button>
+                        <button onclick="ejecutarAccion('mover', 'garaje')">🚗 Garaje</button>
+                        <button onclick="ejecutarAccion('reportar')">🚨 Reportar</button>
+                        <button id="kill-btn" class="hidden" onclick="ejecutarAccion('matar')">🔪 Matar</button>
+                        <button id="sabotage-btn" class="hidden" onclick="ejecutarAccion('sabotear')">⚡ Sabotear</button>
+                    </div>
+                </div>
+
+                <!-- Log del Juego -->
+                <div id="game-log">
+                    <h3>📝 Eventos del Juego</h3>
+                    <div id="log-messages"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

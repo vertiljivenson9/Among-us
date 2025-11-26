@@ -1,0 +1,276 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: #fff;
+    min-height: 100vh;
+}
+
+.screen {
+    display: none;
+    min-height: 100vh;
+}
+
+.screen.active {
+    display: block;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Pantalla de Bienvenida */
+#welcome-screen p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#welcome-screen h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.welcome-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 30px;
+    margin: 20px 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.welcome-card ol {
+    text-align: left;
+    margin: 20px 0;
+    padding-left: 20px;
+}
+
+.welcome-card li {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+.input-group {
+    margin: 30px 0;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.input-group button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    background: linear-gradient(45deg, #4ecdc4, #44a08d);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.input-group button:hover {
+    transform: translateY(-2px);
+}
+
+#game-link {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(76, 175, 80, 0.2);
+    border-radius: 8px;
+}
+
+#game-link code {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 5px;
+    display: block;
+    margin-top: 10px;
+    word-break: break-all;
+}
+
+/* Pantalla del Juego */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+#game-info {
+    display: flex;
+    gap: 20px;
+}
+
+#player-role, #game-status {
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+#player-role.crewmate {
+    background: #4ecdc4;
+}
+
+#player-role.impostor {
+    background: #ff6b6b;
+}
+
+/* Mapa del Juego */
+#map-container {
+    position: relative;
+    margin: 20px 0;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.game-map {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.map-zone {
+    aspect-ratio: 1;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.map-zone:hover {
+    border-color: #4ecdc4;
+    transform: scale(1.05);
+}
+
+.map-zone.exterior {
+    background: rgba(76, 175, 80, 0.2);
+}
+
+.map-zone.interior {
+    background: rgba(255, 193, 7, 0.2);
+}
+
+/* Panel de Acciones */
+#actions-panel {
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.actions-grid button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1em;
+}
+
+.actions-grid button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Log del Juego */
+#game-log {
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#log-messages {
+    margin-top: 15px;
+}
+
+.log-entry {
+    padding: 10px;
+    margin: 5px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    border-left: 4px solid #4ecdc4;
+}
+
+.log-entry.emergency {
+    border-left-color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.2);
+}
+
+.log-entry.kill {
+    border-left-color: #dc3545;
+    background: rgba(220, 53, 69, 0.2);
+}
+
+/* Utilidades */
+.hidden {
+    display: none !important;
+}
+
+.visible {
+    display: block !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    #welcome-screen h1 {
+        font-size: 2em;
+    }
+    
+    .game-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .actions-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .map-zone {
+        font-size: 1.5em;
+    }
+}
